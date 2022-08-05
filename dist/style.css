@@ -1,0 +1,1 @@
+.color-picker{height:auto}.color-picker .picked-color-list{display:flex;flex-wrap:wrap;width:150px}.color-picker .picked-color-list li{list-style:none}.color-picker .picked-color-list .transparent-back{background-image:url(../../assets/components/transparent.png);background-size:cover}.color-picker .color-item{cursor:pointer;height:18px;margin:5px;width:20px}
