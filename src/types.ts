@@ -1,4 +1,4 @@
-import { VNode } from 'vue';
+import { VNode } from "vue";
 export interface State {
   // 中间编辑器渲染的数组
   components: ComponentItem[];

@@ -1,5 +1,5 @@
 import { computed } from "vue";
-import { pick } from "lodash";
+import { pick } from "lodash-es";
 import { TextComponentProps } from "../types";
 
 const useComponentCommon = <T extends Partial<TextComponentProps>>(

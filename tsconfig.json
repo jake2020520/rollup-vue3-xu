@@ -35,10 +35,11 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "src/**/*.vue", "src/vue.d.ts111", "src/index.tsx", "tests/index.spec.tsx",
+    "src/**/*.vue", "src/vue.d.ts", "src/index.tsx", "tests/index.spec.tsx",
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "src/main.ts"
   ]
 }

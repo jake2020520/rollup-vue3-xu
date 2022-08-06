@@ -1,4 +1,4 @@
-import { mapValues, without } from "lodash";
+import { mapValues, without } from "lodash-es";
 import {
   CommonDefaultProps,
   TextComponentProps,
