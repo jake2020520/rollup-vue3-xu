@@ -48,6 +48,7 @@ export default {
       extract: "style.css", // 输出路径
     }),
     json(),
+    // 暂时用不上
     // serve({
     //   port: 3002,
     //   contentBase: "", // 表示起的服务是在根目录下
