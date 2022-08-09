@@ -4,7 +4,8 @@ export default {
   ...basicConfig,
   output: {
     name,
-    file: file("esm"),
+    file: file("es"),
     format: "es",
+    sourcemap: true,
   },
 };

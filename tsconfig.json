@@ -11,7 +11,10 @@
       "dom",
       "es2017"
     ],  
-    "jsx": "preserve", // react preserve
+    // jsx:的三种模式 在preserve模式下生成代码中会保留JSX以供后续的转换操作使用 输出文件会带有.jsx扩展名
+    // react模式会生成React.createElement，在使用前不需要再进行转换操作了
+    // react-native相当于preserve，它也保留了所有的JSX，但是输出文件的扩展名是.js
+    "jsx": "react", // react preserve
     "jsxFactory": "h",  
     "noImplicitAny": false, // 是否在表达式和声明上有隐含的any类型时报错
     // "jsxFragmentFactory": "Fragment",  

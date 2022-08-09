@@ -1,6 +1,7 @@
 import resolve from "@rollup/plugin-node-resolve"; // 第三方模块，需要打包到项目里，就用这个
 import vue from "rollup-plugin-vue";
 import typescript from "rollup-plugin-typescript2";
+import { terser } from "rollup-plugin-terser";
 // import serve from "rollup-plugin-serve";
 import babel from "@rollup/plugin-babel";
 import jsx from "acorn-jsx"; //acorn-jsx是rollup官方推荐的JSX解析器将源代码解析到JSX AST。
@@ -25,16 +26,19 @@ const extensions = [".ts", ".js", ".tsx"];
 export { file, name };
 export default {
   input: "src/main.ts", //入口
+  acornInjectPlugins: [jsx()],
   plugins: [
-    vue(),
+    // jsxN({ allowNamespacedObjects: true, factory: "React.createElement" }),
+    // 我们编写的源码与  依赖的第三方库进行合并 @rollup/plugin-node-resolve
+    resolve({ mainFields: ["module", "main", "browser"] }),
+    vue({ target: "browser", css: false, exposeFilename: false }),
     typescript({
       // tsconfig: path.resolve(__dirname, "tsconfig.json"),
       tsconfigOverride: overrides, // 重置 属性，覆盖前面设置的
     }),
-    // 我们编写的源码与  依赖的第三方库进行合并 @rollup/plugin-node-resolve
-    resolve({ mainFields: ["module", "main", "browser"] }),
+
     commonjs({ extensions, sourceMap: true }),
-    babel({ runtimeHelpers: true, exclude: "**/node_modules/**" }),
+    babel({ babelHelpers: "bundled", exclude: "**/node_modules/**" }),
     postcss({
       plugins: [
         cssnano,
@@ -48,6 +52,7 @@ export default {
       extract: "style.css", // 输出路径
     }),
     json(),
+    terser(), //rollup-plugin-terser 用于压缩 ES6 代码
     // 暂时用不上
     // serve({
     //   port: 3002,
@@ -57,5 +62,4 @@ export default {
     // }),
   ],
   external: ["vue", "lodash-es"], // 告知rollup 哪些是外部的类库,不需要打包
-  acornInjectPlugins: [jsx()],
 };
